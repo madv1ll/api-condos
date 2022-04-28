@@ -2,7 +2,7 @@ const { Router } = require('express')
 const router = Router();
 
 router.get('/', (req, res) => {
-    res.json({"titulo":"hola mundito lindo"});
+    res.send("Rutas: /api/owner");
 });
 
 module.exports = router;
