@@ -1,4 +1,4 @@
-"# api-condos" 
+# api-condos
 Rutas disponibles:
 - /api/owner = Listado de dueños de las casas
 - /api/owner/<rut>//debt = Deuda actual
