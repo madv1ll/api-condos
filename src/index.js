@@ -12,10 +12,12 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 //routes
-app.use('/api/', require('./routes/index'))
-app.use('/api/owner', require('./routes/owner'))
+app.use('/api/', require('./routes/index'));
+app.use('/api/owner', require('./routes/owner'));
+app.use('/api/condo', require('./routes/condo'));
 
 //starting server
 app.listen(app.get('port'), () =>{
-    console.log(`Server on port ${app.get('port')}`);
+    console.log(`Server on port ${app.get('port')}
+    open sv: http://localhost:${app.get('port')}/api/`);
 });
