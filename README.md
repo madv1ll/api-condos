@@ -2,7 +2,7 @@
 Rutas disponibles:
 - /api/owner = Listado de due�os de las casas
 - /api/owner/<rut>//debt = Deuda actual
-- /apu/owner/<rut>/bill = historial de pagos del due�o
+- /api/owner/<rut>/bill = historial de pagos del due�o
 - /api/owner/<rut>/house = listado de casas que posee el due�o
 - /api/owner/<rut>/<houseId> = cantidad de habitantes, m2 de la cassa
 

@@ -8,4 +8,5 @@ const ownerSchema = new Schema({
     condosId: {type: Array, required: true}
 });
 
+
 export default model('owner', ownerSchema);
