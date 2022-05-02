@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose')
 
 const ownerSchema = new Schema({
     rut: {type: String, required: true},
@@ -8,5 +8,4 @@ const ownerSchema = new Schema({
     condosId: {type: Array, required: true}
 });
 
-
-export default model('owner', ownerSchema);
+module.exports = model('owner', ownerSchema);

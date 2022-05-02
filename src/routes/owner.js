@@ -1,21 +1,19 @@
-const { Router } = require('express')
+const { Router } = require('express');
 const router = Router();
+const Ownercontroller = require('../controllers/owner');
 
-router.get('/', (req, res) => {
-    res.json([ {"rut":"19.781.845-K",
-                "nombre":"Kevin Tobar"},
-                {
-                    "rut":"12.500.577-K",
-                    "nombre":"Yasna Moore"
-                }]);
-});
+router.get('/', Ownercontroller.listOwner);
+router.post('/newOwner', Ownercontroller.createOwner);
+// //Transferencias
+// router.get('/historial', Ownercontroller.getTransferencia)
 
-router.get('/rut/debt', (req, res) => {
+router.get('/:rut/', Ownercontroller.getOwner);
+
+router.get('/:id/debt', (req, res) => {
     res.json({
                 "Fecha Deuda": "30-03-2022",
                 "Monto Deuda":"$ 45000"
-    }
-            );
+    });
 });
 
 router.get('/rut/bill', (req, res) => {
