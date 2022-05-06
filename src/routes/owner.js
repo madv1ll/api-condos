@@ -4,10 +4,9 @@ const Ownercontroller = require('../controllers/owner');
 
 router.get('/', Ownercontroller.listOwner);
 router.post('/newOwner', Ownercontroller.createOwner);
-// //Transferencias
-// router.get('/historial', Ownercontroller.getTransferencia)
-
 router.get('/:rut/', Ownercontroller.getOwner);
+router.get('/Deuda', Ownercontroller.listDeuda);
+router.post('/newDeuda', Ownercontroller.createDeuda);
 
 router.get('/:id/debt', (req, res) => {
     res.json({

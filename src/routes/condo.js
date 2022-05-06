@@ -34,7 +34,7 @@ router.get('/condoId/houseTypeId', (req, res) => {
                     "area":"35 m2",
                 }]);
 });
-router.get('/condoId/service ', (req, res) => {
+router.get('/condoId/service', (req, res) => {
     res.json([ {
                 "serviceid":"0",
                 "nombre":"mantenimiento jardin",
