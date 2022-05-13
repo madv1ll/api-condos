@@ -1,11 +1,12 @@
 const { Schema, model } = require('mongoose')
 
 const deudaSchema = new Schema({
-    Ideuda:     {type: String, required: true},
-    Monto:      {type: String, required: true},
-    Fechadesde: {type: String, required: true},
-    Fechavenc:  {type: String, required: true},
-    UltimoPago: {type: String, required: true},
+    monto:      {type: String, required: true},
+    fechadesde: {type: String, required: true},
+    fechavenc:  {type: String, required: true},
+    pagado:     {type: Boolean, required: true},
+    fechaPago:  {type: String, required: true},
+    rut:        {type: String, required: true}
 });
 
 module.exports = model('deuda', deudaSchema);

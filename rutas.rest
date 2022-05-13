@@ -1,0 +1,58 @@
+###
+GET http://localhost:3000/api/owner/list
+###
+GET http://localhost:3000/api/owner/list/19.781.845-K
+###
+GET http://localhost:3000/api/owner/deuda/19.781.845-K
+###
+POST http://localhost:3000/api/owner/newOwner
+Content-Type: application/json
+
+{
+    "rut": "19.999.999-9",
+    "name": "Harrysito",
+    "mail": "Harrys@harrys.cl",
+    "phone": 964748855,
+    "condosId": [4,5,6,7]
+}
+
+###DEUDA
+###
+GET http://localhost:3000/api/owner/deuda/19.781.845-K
+###
+GET http://localhost:3000/api/owner/deuda/19.781.845-K/historial
+###
+POST http://localhost:3000/api/owner/newDeuda
+Content-Type: application/json
+
+{
+    "monto": "31000",
+    "fechadesde":"01/04/2022",
+    "fechavenc":"05/05/2022",
+    "pagado":"true",
+    "fechaPago":"01/05/2022",
+    "rut": "19.999.999-9"
+}
+
+###CONDOSSS
+GET http://localhost:3000/api/condo/list
+###
+POST http://localhost:3000/api/condo/newCondo
+Content-Type: application/json
+
+{
+    "name"        :"Casas del valle",
+    "direction"   :"Valle Sur #553",
+    "houseType"   : "Appartament 12",
+    "housesAmnt"  : 90,
+    "expenses"    : 24000
+}
+
+#APLICACION
+# appId: humao.rest-client
+# Name: REST Client
+# Id: humao.rest-client
+# Description: REST Client for Visual Studio Code
+# Version: 0.24.6
+# Publisher: Huachao Mao
+# VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=humao.rest-client

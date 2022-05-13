@@ -2,9 +2,9 @@ const { Router } = require('express')
 const router = Router();
 const Condocontroller = require('../controllers/condo');
 
-router.get('/', Condocontroller.getCondo);
+router.get('/list', Condocontroller.listCondo);
 router.post('/newCondo', Condocontroller.createCondo);
-router.get('/listCondo', Condocontroller.listCondo);
+router.get('/list/listCondo', Condocontroller.listCondo);
 
 
 router.get('/condominio', (req, res) => {
