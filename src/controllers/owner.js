@@ -40,9 +40,9 @@ controller.createDeuda = async (req, res) => {
 
 //Obtiene deuda actual
 controller.getDeuda = async (req, res) => {
-    const getDeuda = await Deuda.findOne( {rut:req.params.rut})
+    const getDeuda = await Deuda.findOne( {rut:req.params.rut, pagado: false})
     if (getDeuda == null) {
-        res.send("deuda no encontrada")
+        res.send("Sin deudas")
     }else{
             res.json({
                 monto: getDeuda.monto,
