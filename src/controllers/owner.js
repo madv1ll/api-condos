@@ -10,12 +10,16 @@ controller.listOwner = async (req, res) => {
 }
 controller.getOwner = async (req, res) => {
     const owner = await Owner.findOne( {rut: req.params.rut})
-    res.json({
-        name: owner.name,
-        mail: owner.mail,
-        phone: owner.phone,
-        condosId: owner.condosId
-    })
+    if (owner == null){
+        res.send("Rut no encontrado")
+    }else{
+        res.json({
+            name: owner.name,
+            mail: owner.mail,
+            phone: owner.phone,
+            HousesId: owner.housesId
+        })
+    }
 }
 controller.createOwner = async (req, res) => {
     const newOwner = new Owner(req.body)
@@ -37,25 +41,37 @@ controller.createDeuda = async (req, res) => {
 //Obtiene deuda actual
 controller.getDeuda = async (req, res) => {
     const getDeuda = await Deuda.findOne( {rut:req.params.rut})
-    res.json({
-        monto: getDeuda.monto,
-        fechaDesde: getDeuda.fechadesde
-    })
+    if (getDeuda == null) {
+        res.send("deuda no encontrada")
+    }else{
+            res.json({
+                monto: getDeuda.monto,
+                fechaDesde: getDeuda.fechadesde
+            })
+        }
 }
 controller.getDeudaHist = async (req, res) => {
     const getDeudaHist = await Deuda.find( {rut:req.params.rut, pagado: true} )
     dbts = [...getDeudaHist]
     debt = dbts.map(d => {return {"monto": d.monto, "fechadesde":d.fechadesde, "fechavencimiento":d.fechavenc}})
-    res.json({
-        debt
-    })
+    if (debt == null){
+        res.send("Deuda no encontrada")
+    }else{
+        res.json({
+            debt
+        })
+    }
 }
 
 controller.listDeuda = async (req, res) => {
     const debt = await Deuda.find()
     deb = [...debt]
     on= deb.map(o => {return {"Fecha de inicio": o.Fechadesde, "Monto": o.Monto, "Fecha vencimiento":o.Fechavenc, "Ultimo pago":o.UltimoPago}})
-    res.send(on)
+    if (on == null){
+        res.send("deudas no encontradas")
+    }else{
+        res.send(on)
+    }
 }
 
 controller.updateDeuda = (req, res) => {}

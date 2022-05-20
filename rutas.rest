@@ -1,19 +1,17 @@
 ###
 GET http://localhost:3000/api/owner/list
 ###
-GET http://localhost:3000/api/owner/list/19.781.845-K
-###
-GET http://localhost:3000/api/owner/deuda/19.781.845-K
+GET http://localhost:3000/api/owner/list/19.546.874-K
 ###
 POST http://localhost:3000/api/owner/newOwner
 Content-Type: application/json
 
 {
-    "rut": "19.999.999-9",
-    "name": "Harrysito",
-    "mail": "Harrys@harrys.cl",
-    "phone": 964748855,
-    "condosId": [4,5,6,7]
+    "rut": "19.720.997-6",
+    "name": "Fabian Salanzar ",
+    "mail": "f.salazars@duocuc.cl",
+    "phone": 955448376,
+    "housesId": [10]
 }
 
 ###DEUDA
@@ -41,13 +39,32 @@ POST http://localhost:3000/api/condo/newCondo
 Content-Type: application/json
 
 {
-    "name"        :"Casas del valle",
-    "direction"   :"Valle Sur #553",
-    "houseType"   : "Appartament 12",
-    "housesAmnt"  : 90,
-    "expenses"    : 24000
+    "condoId"     : 3,
+    "name"        :"",
+    "direction"   :"",
+    "houseType"   : "",
+    "housesAmnt"  : ,
+    "expenses"    : 
 }
 
+
+###HOUSES
+GET http://localhost:3000/api/house/list
+###
+GET http://localhost:3000/api/house/list/1
+###
+POST http://localhost:3000/api/house/newHouse
+Content-Type:  application/json
+
+{
+    "houseId": 1,
+    "condoId": 1,
+    "price":   120000000,
+    "m2":      135,
+    "rooms":   3,
+    "baths":   1,
+    "floors":  1
+}
 #APLICACION
 # appId: humao.rest-client
 # Name: REST Client
