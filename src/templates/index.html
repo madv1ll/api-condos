@@ -7,34 +7,153 @@
     <title>Api - Condominios</title>
 </head>
 <body>
-    <h1>API Condominios</h1>
-    <h2>Metodos disponibles: </h2>
-    <section>
-        <h1>Dueño</h1>
-        <ol>
-            <li>GET: https://api-condo.herokuapp.com/api/owner/list</li>
-            <li>GEThttps://api-condo.herokuapp.com/api/owner/list/&lt;rut&gt;</li>
-        </ol>
-    </section>
-    <section>
-        <h1>Deuda</h1>
-        <ol>
-            <li>GET https://api-condo.herokuapp.com/api/owner/deuda/&lt;rut&gt;</li>
-            <li> GET https://api-condo.herokuapp.com/api/owner/deuda/&lt;rut&gt;/historial</li>
-        </ol> 
-    </section>
-    <section>
-        <h1>Condominios</h1>
-        <ol>
-            <li>GET https://api-condo.herokuapp.com/api/condo/list</li>
-        </ol>
-    </section>
-    <section>
-        <h1>Casas</h1>
-        <ol>
-            <li>GET https://api-condo.herokuapp.com/api/house/list</li>
-            <li>GET https://api-condo.herokuapp.com/api/house/list/&lt;id&gt;</li>
-        </ol>
+    <h1>WebService Condominios</h1>
+    <h2>APIS disponibles: </h2>
+    <section id="duenno">
+        <table name="Duenno" border="1 px" style="border-collapse: collapse;">
+            <tr><th colspan="3"><h1>Dueño</h1></th></tr>
+            <tr>
+               <th>Método</th>
+                <th>Link</th>
+                <th>Parametros</th>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>https://api-condo.herokuapp.com/api/owner/list</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>https://api-condo.herokuapp.com/api/owner/list/&lt;rut&gt;</td>
+                <td>rut : rut correspondiente a un dueño</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>http://api-condo.herokuapp.com/api/owner/newOwner</td>
+                <td>
+                    <pre>
+Content-Type: application/json
+
+{
+    "rut": {type: String, required: true},
+    "name": {type: String, required: true},
+    "mail": {type: String, required: false},
+    "phone": {type: Number, required: false},
+    "condosId": {type: Array, required: true}
+}
+                    </pre>
+                </td>
+            </tr>
+        </table>
+    </section><br>
+    <section id="deuda">
+        <table name="Deuda" border="1 px" style="border-collapse: collapse;">
+            <tr><th colspan="3"><h1>Deuda</h1></th></tr>
+            <tr>
+                <th>Método</th>
+                 <th>Link</th>
+                 <th>Parametros</th>
+             </tr>
+             <tr>
+                 <td>GET</td>
+                 <td>https://api-condo.herokuapp.com/api/owner/deuda/&lt;rut&gt;</td>
+                 <td>rut : rut correspondiente a un dueño</td>
+             </tr>
+             <tr>
+                 <td>GET</td>
+                 <td>https://api-condo.herokuapp.com/api/owner/deuda/&lt;rut&gt;/historial</td>
+                 <td>rut : rut correspondiente a un dueño</td>
+             </tr>
+             <tr>
+                 <td>POST</td>
+                 <td>http://api-condo.herokuapp.com/api/owner/newDeuda</td>
+                 <td>
+                    <pre>
+Content-Type: application/json
+
+{
+    "monto": {type: String, required: true},
+    "fechadesde": {type: String, required: true},
+    "fechavenc": {type: String, required: true},
+    "pagado": {type: Boolean, required: true},
+    "fechaPago": {type: String, required: true},
+    "rut": {type: String, required: true}
+}
+                    </pre>
+                 </td>
+             </tr>
+        </table>
+    </section><br>
+    <section id="condominio">
+        <table name="Condominio" border="1 px" style="border-collapse: collapse;">
+            <tr><th colspan="3"><h1>Condominios</h1></th></tr>
+            <tr>
+                <th>Método</th>
+                 <th>Link</th>
+                 <th>Parametros</th>
+             </tr>
+             <tr>
+                 <td>GET</td>
+                 <td>https://api-condo.herokuapp.com/api/condo/list</td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>POST</td>
+                 <td>http://api-condo.herokuapp.com/api/condo/newCondo</td>
+                 <td>
+                    <pre>
+Content-Type: application/json
+
+{
+    "condoId": {type: Number, required: true},
+    "name": {type: String, required: true},
+    "direction": {type: String, required: true},
+    "houseType": {type: String, required: true},
+    "housesAmnt": {type: Number, required: true},
+    "expenses": {type: Number, required: true}
+}
+                    </pre> 
+                 </td>
+             </tr>
+        </table>
+    </section><br>
+    <section id="casa">
+        <table name="Casa" border="1 px" style="border-collapse: collapse;">
+            <tr><th colspan="3"><h1>Casas</h1></th></tr>
+            <tr>
+                <th>Método</th>
+                 <th>Link</th>
+                 <th>Parametros</th>
+             </tr>
+             <tr>
+                 <td>GET</td>
+                 <td>https://api-condo.herokuapp.com/api/house/list</td>
+             </tr>
+             <tr>
+                 <td>GET</td>
+                 <td>https://api-condo.herokuapp.com/api/house/list/&lt;id&gt;</td>
+                 <td>id : id correspondiente a casa (houseId)</td>
+             </tr>
+             <tr>
+                 <td>POST</td>
+                 <td>http://api-condo.herokuapp.com/api/house/newHouse</td>
+                 <td>
+                    <pre>
+Content-Type:  application/json
+
+{
+    houseId: {type: Number, required: true},
+    condoId: {type: Number, required: true},
+    price: {type: Number, required: false},
+    m2: {type: Number, required: false},
+    rooms: {type: Number, required: true},
+    baths: {type: Number, required: true},
+    floors: {type: Number, required: true}
+}
+                    </pre>
+                 </td>
+             </tr>
+        </table>
     </section>
 </body>
 </html>
