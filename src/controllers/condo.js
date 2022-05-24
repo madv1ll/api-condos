@@ -4,7 +4,7 @@ const Condo = require('../models/condo')
 controller.listCondo = async (req, res) => {
     const condo = await Condo.find()
     con = [...condo]
-    on = con.map(o => {return {"Nombre": o.name, "Direccion":o.direction}})
+    on = con.map(o => {return {"ID": o._id, "Nombre": o.name, "Direccion":o.direction}})
     res.send(on)
 }
 controller.getCondo = async (req, res) => {
@@ -17,7 +17,45 @@ controller.createCondo = async (req, res) => {
     await newCondo.save()
     res.send({message: 'Condominio created'})
 }
-controller.updateOwner = (req, res) => {}
-controller.deleteOwner = (req, res) => {}
-
+controller.updateCondo = (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: "Data to update can not be empty!"
+      });
+    }
+    const id = req.params.id;
+    Condo.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+      .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `No se puede modificar el condominio con id=${id}. Tal vez el condominio no existe!`
+          });
+        } else res.send({ message: "Condominio modificado!" });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error modificando el Condominio de id=" + id
+        });
+      });
+  };
+controller.deleteCondo = (req, res) => {
+    const id = req.params.id;
+    Condo.findByIdAndRemove(id)
+      .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `No se puede eleminar el condominio con id=${id}. Tal vez el condominio no existe!`
+          });
+        } else {
+          res.send({
+            message: "Condominio eliminado!"
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error eliminando el Condominio de id=" + id
+        });
+      });
+  };
 module.exports = controller

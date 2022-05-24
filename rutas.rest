@@ -13,8 +13,21 @@ Content-Type: application/json
     "phone": 955448376,
     "housesId": [10]
 }
+###
+PUT http://localhost:3000/api/owner/modify/19.720.997-6
+Content-Type: application/json
 
-###DEUDA
+{
+    "rut": "19.720.997-6",
+    "name": "Fabian Salazar",
+    "mail": "f.salazars@duocuc.cl",
+    "phone": 955448376,
+    "housesId": [10]
+}
+###
+DELETE http://localhost:3000/api/owner/delete/5000003-3/eliminar123
+
+#-------------------------------------DEUDA-----------------------------------------------
 ###
 GET http://localhost:3000/api/owner/deuda/19.781.845-K
 ###
@@ -23,23 +36,29 @@ GET http://localhost:3000/api/owner/deuda/19.781.845-K/historial
 POST http://localhost:3000/api/owner/newDeuda
 Content-Type: application/json
 
+
+###
+PUT http://localhost:3000/api/owner/deuda/modify/6287d4971ca9ee478be0dc6b
+Content-Type: application/json
+
 {
     "monto": "31000",
-    "fechadesde":"01/04/2022",
-    "fechavenc":"05/05/2022",
+    "fechadesde": "01/01/2022",
+    "fechavencimiento": "05/02/2022",
     "pagado":"true",
-    "fechaPago":"01/05/2022",
-    "rut": "19.999.999-9"
+    "fechaPago":"01/02/2022",
+    "rut": "19.453.567-5"
 }
+###
+DELETE http://localhost:3000/api/owner/deuda/delete/6287d4971ca9ee478be0dc6b/eliminar123
 
-###CONDOSSS
+#-------------------------------------CONDOMINIO-----------------------------------------------
 GET http://localhost:3000/api/condo/list
 ###
 POST http://localhost:3000/api/condo/newCondo
 Content-Type: application/json
 
 {
-    "condoId"     : 3,
     "name"        :"",
     "direction"   :"",
     "houseType"   : "",
@@ -47,8 +66,23 @@ Content-Type: application/json
     "expenses"    : 
 }
 
+###
+DELETE http://localhost:3000/api/condo/delete/6287d7b2ea3d509beddb9fd5
 
-###HOUSES
+###
+PUT http://localhost:3000/api/condo/modify/6287d7b2ea3d509beddb9fd5
+Content-Type: application/json
+
+{
+    "name"        :"",
+    "direction"   :"",
+    "houseType"   : "",
+    "housesAmnt"  : ,
+    "expenses"    : 
+}
+
+#-------------------------------------HOUSES-----------------------------------------------
+###
 GET http://localhost:3000/api/house/list
 ###
 GET http://localhost:3000/api/house/list/1
@@ -65,6 +99,22 @@ Content-Type:  application/json
     "baths":   1,
     "floors":  1
 }
+###
+PUT http://localhost:3000/api/house/modify/1
+Content-Type:  application/json
+
+{
+    "houseId": 1,
+    "condoId": 1,
+    "price":   123,
+    "m2":      135,
+    "rooms":   3,
+    "baths":   1,
+    "floors":  1
+}
+###
+DELETE http://localhost:3000/api/house/delete/1/eliminarcasa123
+
 #APLICACION
 # appId: humao.rest-client
 # Name: REST Client

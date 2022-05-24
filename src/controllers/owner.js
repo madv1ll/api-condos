@@ -1,7 +1,7 @@
 const controller = {}
 const Owner = require('../models/owner')
 const Deuda = require('../models/deuda')
-
+const password = 'eliminar123'
 controller.listOwner = async (req, res) => {
     const owner = await Owner.find()
     own = [...owner]
@@ -27,8 +27,53 @@ controller.createOwner = async (req, res) => {
     await newOwner.save()
     res.send({message: 'Owner created'})
 }
-controller.updateOwner = (req, res) => {}
-controller.deleteOwner = (req, res) => {}
+controller.updateOwner = async (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+          message: "Data to update can not be empty!"
+        });
+    }
+    const rut = req.params.rut;
+    const duenno = await Owner.findOne({ rut: rut });
+    Owner.findByIdAndUpdate(duenno._id, req.body, { useFindAndModify: false })
+    .then(data => {
+        if (!data) {
+        res.status(404).send({
+            message: `No se puede modificar el dueño con id=${id}, rut=${rut}. Tal vez el dueño no existe!`
+        });
+        } else res.send({ message: "Dueño modificado!" });
+    })
+    .catch(err => {
+        res.status(500).send({
+        message: "Error modificando el dueño de id=" + duenno._id
+        });
+    });
+};
+
+controller.deleteOwner = async (req, res) => {
+    const rut = req.params.rut;
+    const pass = req.params.pass;
+    const {_id} = await Owner.findOne({ rut: rut });
+    if (pass === password){
+        Owner.findByIdAndRemove(_id)
+          .then(data => {
+            if (!data) {
+              res.status(404).send({
+                message: `No se puede eliminar el dueño con rut=${rut}. Tal vez el dueño no existe!`
+              });
+            } else {
+              res.send({
+                message: "Dueño eliminado!"
+              });
+            }
+          })
+          .catch(err => {
+            res.status(500).send({
+              message: "No se pudo eliminar el dueño con rut=" + rut
+            });
+          });
+    }
+};
 
 //deuda
 controller.createDeuda = async (req, res) => {
@@ -53,7 +98,7 @@ controller.getDeuda = async (req, res) => {
 controller.getDeudaHist = async (req, res) => {
     const getDeudaHist = await Deuda.find( {rut:req.params.rut, pagado: true} )
     dbts = [...getDeudaHist]
-    debt = dbts.map(d => {return {"monto": d.monto, "fechadesde":d.fechadesde, "fechavencimiento":d.fechavenc}})
+    debt = dbts.map(d => {return {"ID": d._id, "monto": d.monto, "fechadesde":d.fechadesde, "fechavencimiento":d.fechavenc}})
     if (debt == null){
         res.send("Deuda no encontrada")
     }else{
@@ -73,8 +118,49 @@ controller.listDeuda = async (req, res) => {
         res.send(on)
     }
 }
-
-controller.updateDeuda = (req, res) => {}
-controller.deleteDeuda = (req, res) => {}
+controller.updateDeuda = (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+          message: "Data to update can not be empty!"
+        });
+      }
+      const id = req.params.id;
+      Deuda.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+        .then(data => {
+          if (!data) {
+            res.status(404).send({
+              message: `No se puede modificar la deuda con id=${id}. Tal vez la deuda no exite!`
+            });
+          } else res.send({ message: "Deuda modificada!." });
+        })
+        .catch(err => {
+          res.status(500).send({
+            message: "Error modificando la deuda con id=" + id
+          });
+        });
+    };
+controller.deleteDeuda = (req, res) => {
+    const pass = req.params.pass;
+    const id = req.params.id;
+    if (pass === password){
+        Deuda.findByIdAndRemove(id)
+          .then(data => {
+            if (!data) {
+              res.status(404).send({
+                message: `No se puede eliminar la deuda con id=${id}. Tal vez la deuda no existe!`
+              });
+            } else {
+              res.send({
+                message: "Deuda eliminada!"
+              });
+            }
+          })
+          .catch(err => {
+            res.status(500).send({
+              message: "No se pudo eliminar la deuda con rut=" + id
+            });
+          });
+    }
+}
 
 module.exports = controller

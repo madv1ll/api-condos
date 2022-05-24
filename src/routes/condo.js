@@ -5,7 +5,8 @@ const Condocontroller = require('../controllers/condo');
 router.get('/list', Condocontroller.listCondo);
 router.post('/newCondo', Condocontroller.createCondo);
 router.get('/list/listCondo', Condocontroller.listCondo);
-
+router.put("/modify/:id", Condocontroller.updateCondo);
+router.delete("/delete/:id", Condocontroller.deleteCondo);
 
 router.get('/condominio', (req, res) => {
     res.json([ {

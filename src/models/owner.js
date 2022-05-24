@@ -5,7 +5,7 @@ const ownerSchema = new Schema({
     name: {type: String, required: true},
     mail: {type: String, required: false},
     phone: {type: Number, required: false},
-    condosId: {type: Array, required: true}
+    housesId: {type: Array, required: true}
 });
 
 module.exports = model('owner', ownerSchema);

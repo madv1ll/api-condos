@@ -39,8 +39,35 @@ Content-Type: application/json
     "name": {type: String, required: true},
     "mail": {type: String, required: false},
     "phone": {type: Number, required: false},
-    "condosId": {type: Array, required: true}
+    "housesId": {type: Array, required: true}
 }
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>http://api-condo.herokuapp.com/api/owner/modify/&lt;rut&gt;</td>
+                <td>
+                    <pre>
+Content-Type: application/json
+
+{
+    "rut": {type: String, required: true},
+    "name": {type: String, required: true},
+    "mail": {type: String, required: false},
+    "phone": {type: Number, required: false},
+    "housesId": {type: Array, required: true}
+}
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>http://api-condo.herokuapp.com/api/owner/delete/&lt;rut&gt;/&lt;pass&gt;</td>
+                <td>
+                    <pre>
+rut : Rut correspondiente a un dueño
+pass : contraseña para eliminar el dueño
                     </pre>
                 </td>
             </tr>
@@ -82,6 +109,35 @@ Content-Type: application/json
                     </pre>
                  </td>
              </tr>
+             <tr>
+                <td>PUT</td>
+                <td>http://api-condo.herokuapp.com/api/owner/deuda/&lt;id&gt;</td>
+                <td>
+                   <pre>
+id = id correspondiente a la deuda
+Content-Type: application/json
+
+{
+   "monto": {type: String, required: true},
+   "fechadesde": {type: String, required: true},
+   "fechavenc": {type: String, required: true},
+   "pagado": {type: Boolean, required: true},
+   "fechaPago": {type: String, required: true},
+   "rut": {type: String, required: true}
+}
+                   </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>http://api-condo.herokuapp.com/api/owner/deuda/delete/&lt;id&gt;/&lt;pass&gt;</td>
+                <td>
+                    <pre>
+id : Id correspondiente a una deuda
+pass : contraseña para eliminar la deuda
+                    </pre>
+                </td>
+            </tr>
         </table>
     </section><br>
     <section id="condominio">
@@ -105,7 +161,6 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
-    "condoId": {type: Number, required: true},
     "name": {type: String, required: true},
     "direction": {type: String, required: true},
     "houseType": {type: String, required: true},
@@ -115,6 +170,33 @@ Content-Type: application/json
                     </pre> 
                  </td>
              </tr>
+             <tr>
+                <td>PUT</td>
+                <td>http://api-condo.herokuapp.com/api/condo/modify/&lt;id&gt;</td>
+                <td>
+                   <pre>
+id = ID correspondiente al condominio
+Content-Type: application/json
+
+{
+   "name": {type: String, required: true},
+   "direction": {type: String, required: true},
+   "houseType": {type: String, required: true},
+   "housesAmnt": {type: Number, required: true},
+   "expenses": {type: Number, required: true}
+}
+                   </pre> 
+                </td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>http://api-condo.herokuapp.com/api/condo/delete/&lt;id&gt;</td>
+                <td>
+                   <pre>
+id = ID correspondiente al condominio
+                   </pre> 
+                </td>
+            </tr>
         </table>
     </section><br>
     <section id="casa">
@@ -153,6 +235,48 @@ Content-Type:  application/json
                     </pre>
                  </td>
              </tr>
+             <tr>
+                <td>PUT</td>
+                <td>http://api-condo.herokuapp.com/api/house/modify/&lt;id&gt;</td>
+                <td>
+                   <pre>
+id : id correspondiente a casa (houseId)
+Content-Type:  application/json
+
+{
+   houseId: {type: Number, required: true},
+   condoId: {type: Number, required: true},
+   price: {type: Number, required: false},
+   m2: {type: Number, required: false},
+   rooms: {type: Number, required: true},
+   baths: {type: Number, required: true},
+   floors: {type: Number, required: true}
+}
+                   </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>http://api-condo.herokuapp.com/api/house/delete/&lt;id&gt;</td>
+                <td>
+                   <pre>
+id : id correspondiente a casa (houseId)
+pass : contraseña para eliminar la deuda
+
+Content-Type:  application/json
+
+{
+   houseId: {type: Number, required: true},
+   condoId: {type: Number, required: true},
+   price: {type: Number, required: false},
+   m2: {type: Number, required: false},
+   rooms: {type: Number, required: true},
+   baths: {type: Number, required: true},
+   floors: {type: Number, required: true}
+}
+                   </pre>
+                </td>
+            </tr>
         </table>
     </section>
 </body>
