@@ -99,12 +99,12 @@ pass : contraseña para eliminar el dueño
 Content-Type: application/json
 
 {
-    "monto": {type: String, required: true},
-    "fechadesde": {type: String, required: true},
-    "fechavenc": {type: String, required: true},
-    "pagado": {type: Boolean, required: true},
-    "fechaPago": {type: String, required: true},
-    "rut": {type: String, required: true}
+    rut:               {type: String, required: true},
+    nombre:            {type: String, required: true},
+    direccion:         {type: String, required: true},
+    fechaPago:         {type: String, required: false},
+    fechavencimiento:  {type: String, required: true},
+    valorPago:         {type: Number, required: true}
 }
                     </pre>
                  </td>
@@ -118,12 +118,12 @@ id = id correspondiente a la deuda
 Content-Type: application/json
 
 {
-   "monto": {type: String, required: true},
-   "fechadesde": {type: String, required: true},
-   "fechavenc": {type: String, required: true},
-   "pagado": {type: Boolean, required: true},
-   "fechaPago": {type: String, required: true},
-   "rut": {type: String, required: true}
+    rut:               {type: String, required: true},
+    nombre:            {type: String, required: true},
+    direccion:         {type: String, required: true},
+    fechaPago:         {type: String, required: false},
+    fechavencimiento:  {type: String, required: true},
+    valorPago:         {type: Number, required: true}
 }
                    </pre>
                 </td>

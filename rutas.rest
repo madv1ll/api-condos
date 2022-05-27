@@ -36,18 +36,26 @@ GET http://localhost:3000/api/owner/deuda/19.781.845-K/historial
 POST http://localhost:3000/api/owner/newDeuda
 Content-Type: application/json
 
+{
+    "rut": "19.453.567-5"
+    ,"nombre": "Valentina Mora"
+    ,"direccion": "direccion 232"
+    ,"fechaPago": "27/04/2022"
+    ,"fechavencimiento": "31/04/2022"
+    ,"valorPago": 5345354
+}
 
 ###
 PUT http://localhost:3000/api/owner/deuda/modify/6287d4971ca9ee478be0dc6b
 Content-Type: application/json
 
 {
-    "monto": "31000",
-    "fechadesde": "01/01/2022",
-    "fechavencimiento": "05/02/2022",
-    "pagado":"true",
-    "fechaPago":"01/02/2022",
     "rut": "19.453.567-5"
+    ,"nombre": "Valentina Mora"
+    ,"direccion": "direccion 232"
+    ,"fechaPago": "27/05/2022"
+    ,"fechavencimiento": "31/05/2022"
+    ,"valorPago": 3123123
 }
 ###
 DELETE http://localhost:3000/api/owner/deuda/delete/6287d4971ca9ee478be0dc6b/eliminar123

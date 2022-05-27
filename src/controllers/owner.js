@@ -80,25 +80,30 @@ controller.createDeuda = async (req, res) => {
     const newDeuda = new Deuda(req.body)
     console.log(newDeuda)
     await newDeuda.save()
-    res.send({message: 'Deuda created'})
+    res.send({message: 'Deuda creada'})
 }
 
 //Obtiene deuda actual
 controller.getDeuda = async (req, res) => {
-    const getDeuda = await Deuda.findOne( {rut:req.params.rut, pagado: false})
+    const getDeuda = await Deuda.findOne( {rut:req.params.rut})
     if (getDeuda == null) {
         res.send("Sin deudas")
     }else{
             res.json({
-                monto: getDeuda.monto,
-                fechaDesde: getDeuda.fechadesde
+                "id": getDeuda._id,
+                "rut": getDeuda.rut,
+                "nombre": getDeuda.nombre,
+                "direccion": getDeuda.direccion,
+                "fecha de Pago": getDeuda.fechaPago,
+                "fecha de Vencimiento": getDeuda.fechavencimiento,
+                "Valor de Pago": getDeuda.valorPago,
             })
         }
 }
 controller.getDeudaHist = async (req, res) => {
     const getDeudaHist = await Deuda.find( {rut:req.params.rut, pagado: true} )
     dbts = [...getDeudaHist]
-    debt = dbts.map(d => {return {"ID": d._id, "monto": d.monto, "fechadesde":d.fechadesde, "fechavencimiento":d.fechavenc}})
+    debt = dbts.map(d => {return d})
     if (debt == null){
         res.send("Deuda no encontrada")
     }else{
