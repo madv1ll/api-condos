@@ -1,32 +1,37 @@
-const controller = {}
-const Owner = require('../models/owner')
-const Deuda = require('../models/deuda')
-const password = 'eliminar123'
+const Owner = require('../models/owner');
+const Deuda = require('../models/deuda');
+const axios = require('axios');
+
+const password = 'eliminar123';
+const controller = {};
+
 controller.listOwner = async (req, res) => {
-    const owner = await Owner.find()
-    own = [...owner]
-    on = own.map(o => {return {"name": o.name, "rut":o.rut}})
-    res.send(on)
-}
+    const owner = await Owner.find();
+    own = [...owner];
+    on = own.map(o => {return {"name": o.name, "rut":o.rut}});
+    res.send(on);
+};
+
 controller.getOwner = async (req, res) => {
-    const owner = await Owner.findOne( {rut: req.params.rut})
+    const owner = await Owner.findOne( {rut: req.params.rut});
     if (owner == null){
-        res.send("Rut no encontrado")
+        res.send("Rut no encontrado");
     }else{
         res.json({
             name: owner.name,
             mail: owner.mail,
             phone: owner.phone,
             HousesId: owner.housesId
-        })
+        });
     }
-}
+};
+
 controller.createOwner = async (req, res) => {
-    const newOwner = new Owner(req.body)
-    console.log(newOwner)
+    const newOwner = new Owner(req.body);
     await newOwner.save()
-    res.send({message: 'Owner created'})
-}
+    res.send({message: 'Owner created'});
+};
+
 controller.updateOwner = async (req, res) => {
     if (!req.body) {
         return res.status(400).send({
@@ -77,17 +82,28 @@ controller.deleteOwner = async (req, res) => {
 
 //deuda
 controller.createDeuda = async (req, res) => {
-    const newDeuda = new Deuda(req.body)
-    console.log(newDeuda)
-    await newDeuda.save()
-    res.send({message: 'Deuda creada'})
-}
+    const newDeuda = new Deuda(req.body);
+    await newDeuda.save();
+    res.send({message: 'Deuda creada'});
+    // axios({
+    //   method: 'post',
+    //   url: 'http://musicpro-api.herokuapp.com/api/createClient',
+    //   data: {
+    //     rut: "19.453.567-5",
+    //     nombre: "Valentina Mora",
+    //     direccio: "direccion 232",
+    //     fechaPago: "27/03/2022",
+    //     fechavencimiento: "31/03/2022",
+    //     valorPago: 5345354
+    //   }
+    // });
+};
 
 //Obtiene deuda actual
 controller.getDeuda = async (req, res) => {
-    const getDeuda = await Deuda.findOne( {rut:req.params.rut})
+    const getDeuda = await Deuda.findOne( {rut:req.params.rut});
     if (getDeuda == null) {
-        res.send("Sin deudas")
+        res.send("Sin deudas");
     }else{
             res.json({
                 "id": getDeuda._id,
@@ -97,26 +113,26 @@ controller.getDeuda = async (req, res) => {
                 "fecha de Pago": getDeuda.fechaPago,
                 "fecha de Vencimiento": getDeuda.fechavencimiento,
                 "Valor de Pago": getDeuda.valorPago,
-            })
+            });
         }
-}
+};
 controller.getDeudaHist = async (req, res) => {
-    const getDeudaHist = await Deuda.find( {rut:req.params.rut, pagado: true} )
-    dbts = [...getDeudaHist]
-    debt = dbts.map(d => {return d})
+    const getDeudaHist = await Deuda.find( {rut:req.params.rut, pagado: true} );
+    dbts = [...getDeudaHist];
+    debt = dbts.map(d => {return d});
     if (debt == null){
-        res.send("Deuda no encontrada")
+        res.send("Deuda no encontrada");
     }else{
         res.json({
             debt
-        })
+        });
     }
-}
+};
 
 controller.listDeuda = async (req, res) => {
-    const debt = await Deuda.find()
-    deb = [...debt]
-    on= deb.map(o => {return {"Fecha de inicio": o.Fechadesde, "Monto": o.Monto, "Fecha vencimiento":o.Fechavenc, "Ultimo pago":o.UltimoPago}})
+    const debt = await Deuda.find();
+    deb = [...debt];
+    on= deb.map(o => {return {"Fecha de inicio": o.Fechadesde, "Monto": o.Monto, "Fecha vencimiento":o.Fechavenc, "Ultimo pago":o.UltimoPago}});
     if (on == null){
         res.send("deudas no encontradas")
     }else{

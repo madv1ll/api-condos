@@ -46,6 +46,18 @@ Content-Type: application/json
 }
 
 ###
+POST http://musicpro-api.herokuapp.com/api/createClient
+Content-Type: application/json
+
+{
+    "rut": "19.453.567-5"
+    ,"nombre": "Valentina Mora"
+    ,"direccion": "direccion 232"
+    ,"fechaPago": "27/04/2022"
+    ,"fechavencimiento": "31/04/2022"
+    ,"valorPago": 5345354
+}
+###
 PUT http://localhost:3000/api/owner/deuda/modify/6287d4971ca9ee478be0dc6b
 Content-Type: application/json
 
