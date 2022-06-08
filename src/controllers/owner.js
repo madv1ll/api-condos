@@ -82,6 +82,17 @@ controller.deleteOwner = async (req, res) => {
 
 //deuda
 controller.createDeuda = async (req, res) => {
+    if (!req.body.rut){res.send({message: 'Falta rut'});return false}
+    if (!req.body.nombre){res.send({message: 'Falta nombre'});return false}
+    if (!req.body.apPaterno){res.send({message: 'Falta apPatreno'});return false}
+    if (!req.body.apMaterno){res.send({message: 'Falta apMaterno'});return false}
+    if (!req.body.nroBoleta){res.send({message: 'Falta NroBoleta'});return false}
+    if (!req.body.direccion){res.send({message: 'Falta direccion'});return false}
+    if (!req.body.fechaPago){res.send({message: 'Falta fechaPago'});return false}
+    if (!req.body.fechaVencimiento){res.send({message: 'Falta fechaVencimiento'});return false}
+    if (!req.body.monto){res.send({message: 'Falta monto'}); return false}
+    if (!req.body.canal){res.send({message: 'Falta canal'}); return false}
+    if (req.body.canal != 1 || req.body.canal != 0){res.send({message: 'el canal debe ser 0=ingreso o 1=grupo'});return false;}
     const newDeuda = new Deuda(req.body);
     await newDeuda.save();
     res.send({message: 'Deuda creada'});
