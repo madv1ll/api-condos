@@ -38,11 +38,15 @@ Content-Type: application/json
 
 {
     "rut": "19.453.567-5"
-    ,"nombre": "Valentina Mora"
+    ,"nombre": "Valentina"
+    ,"apPaterno": "Mora"
+    ,"apMaterno": "Mora"
+    ,"nroBoleta": 12222
     ,"direccion": "direccion 232"
     ,"fechaPago": "27/04/2022"
-    ,"fechavencimiento": "31/04/2022"
-    ,"valorPago": 5345354
+    ,"fechaVencimiento": "31/04/2022"
+    ,"monto": 5345354
+    ,"canal": 5
 }
 
 ###
