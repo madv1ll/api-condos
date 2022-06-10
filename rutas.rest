@@ -29,9 +29,9 @@ DELETE http://localhost:3000/api/owner/delete/5000003-3/eliminar123
 
 #-------------------------------------DEUDA-----------------------------------------------
 ###
-GET http://localhost:3000/api/owner/deuda/19.781.845-K
+GET http://localhost:3000/api/owner/deuda/19.453.567-5
 ###
-GET http://localhost:3000/api/owner/deuda/19.781.845-K/historial
+GET http://localhost:3000/api/owner/deuda/19.453.567-5/historial
 ###
 POST http://localhost:3000/api/owner/newDeuda
 Content-Type: application/json
@@ -46,7 +46,7 @@ Content-Type: application/json
     ,"fechaPago": "27/04/2022"
     ,"fechaVencimiento": "31/04/2022"
     ,"monto": 5345354
-    ,"canal": 5
+    ,"canal": 1
 }
 
 ###

@@ -91,23 +91,68 @@ controller.createDeuda = async (req, res) => {
     if (!req.body.fechaPago){res.send({message: 'Falta fechaPago'});return false}
     if (!req.body.fechaVencimiento){res.send({message: 'Falta fechaVencimiento'});return false}
     if (!req.body.monto){res.send({message: 'Falta monto'}); return false}
-    if (!req.body.canal){res.send({message: 'Falta canal'}); return false}
-    if (req.body.canal != 1 || req.body.canal != 0){res.send({message: 'el canal debe ser 0=ingreso o 1=grupo'});return false;}
-    const newDeuda = new Deuda(req.body);
-    await newDeuda.save();
-    res.send({message: 'Deuda creada'});
-    // axios({
-    //   method: 'post',
-    //   url: 'http://musicpro-api.herokuapp.com/api/createClient',
-    //   data: {
-    //     rut: "19.453.567-5",
-    //     nombre: "Valentina Mora",
-    //     direccio: "direccion 232",
-    //     fechaPago: "27/03/2022",
-    //     fechavencimiento: "31/03/2022",
-    //     valorPago: 5345354
-    //   }
-    // });
+    if (!req.body.canal){res.send({message: 'Falta canal '+req.body.canal}); return false}
+    if (req.body.canal != 1 && req.body.canal != 2){res.send({message: 'el canal debe ser 1=ingreso o 2=grupo canal: '+ typeof(req.body.canal)});return false;}
+    if (req.body.canal == 2){
+      const newDeuda = new Deuda(req.body);
+      await newDeuda.save();
+      res.send({message: 'Deuda creada'});
+    } else{
+      const newDeuda = new Deuda(req.body);
+      await newDeuda.save();
+      //GRUPO 1
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/api/owner/newDeuda',
+        data: {
+        rut: req.body.rut
+        ,nombre: req.body.nombre
+        ,apPaterno: req.body.apPaterno
+        ,apMaterno: req.body.apMaterno
+        ,nroBoleta: req.body.nroBoleta
+        ,direccion: req.body.direccion
+        ,fechaPago: req.body.fechaPago
+        ,fechaVencimiento: req.body.fechaVencimiento
+        ,monto: req.body.monto
+        ,canal: 2
+        }
+      });
+      // //GRUPO 2
+      // axios({
+      //   method: 'post',
+      //   url: '',
+      //   data: {
+      //   rut: req.body.rut
+      //   ,nombre: req.body.nombre
+      //   ,apPaterno: req.body.apPaterno
+      //   ,apMaterno: req.body.apMaterno
+      //   ,nroBoleta: req.body.nroBoleta
+      //   ,direccion: req.body.direccion
+      //   ,fechaPago: req.body.fechaPago
+      //   ,fechaVencimiento: req.body.fechaVencimiento
+      //   ,monto: req.body.monto
+      //   ,canal: req.body.canal
+      //   }
+      // });
+      // //GRUPO 3
+      // axios({
+      //   method: 'post',
+      //   url: '',
+      //   data: {
+      //   rut: req.body.rut
+      //   ,nombre: req.body.nombre
+      //   ,apPaterno: req.body.apPaterno
+      //   ,apMaterno: req.body.apMaterno
+      //   ,nroBoleta: req.body.nroBoleta
+      //   ,direccion: req.body.direccion
+      //   ,fechaPago: req.body.fechaPago
+      //   ,fechaVencimiento: req.body.fechaVencimiento
+      //   ,monto: req.body.monto
+      //   ,canal: req.body.canal
+      //   }
+      // });
+      res.send({message: 'Deuda creada y enviada a grupos'});
+    }
 };
 
 //Obtiene deuda actual
