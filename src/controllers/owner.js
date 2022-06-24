@@ -165,11 +165,24 @@ controller.getDeuda = async (req, res) => {
                 "id": getDeuda._id,
                 "rut": getDeuda.rut,
                 "nombre": getDeuda.nombre,
+                "apPaterno": getDeuda.apPaterno,
+                "apMaterno": getDeuda.apMaterno,
+                "nroBoleta": getDeuda.nroBoleta,
                 "direccion": getDeuda.direccion,
                 "fecha de Pago": getDeuda.fechaPago,
-                "fecha de Vencimiento": getDeuda.fechavencimiento,
-                "Valor de Pago": getDeuda.valorPago,
+                "fecha de Vencimiento": getDeuda.fechaVencimiento,
+                "Valor de Pago": getDeuda.Monto
             });
+            // "rut": "19.453.567-5"
+            // ,"nombre": "Valentina"
+            // ,"apPaterno": "Mora"
+            // ,"apMaterno": "Mora"
+            // ,"nroBoleta": 12222
+            // ,"direccion": "direccion 232"
+            // ,"fechaPago": "27/04/2022"
+            // ,"fechaVencimiento": "31/04/2022"
+            // ,"monto": 5345354
+            // ,"canal": 2
         }
 };
 controller.getDeudaHist = async (req, res) => {

@@ -62,60 +62,65 @@ Content-Type: application/json
 #     ,"valorPago": 5345354
 # }
 ###
-PUT http://localhost:3000/api/owner/deuda/modify/6287d4971ca9ee478be0dc6b
+PUT http://api-condo.herokuapp.com/api/owner/deuda/modify/62b619fc5dde100b8369062f
 Content-Type: application/json
 
 {
     "rut": "19.453.567-5"
-    ,"nombre": "Valentina Mora"
+    ,"nombre": "Valentina"
+    ,"apPaterno": "Mora"
+    ,"apMaterno": "Mora"
+    ,"nroBoleta": 12222
     ,"direccion": "direccion 232"
-    ,"fechaPago": "27/05/2022"
-    ,"fechavencimiento": "31/05/2022"
-    ,"valorPago": 3123123
+    ,"fechaPago": "27/04/2022"
+    ,"fechaVencimiento": "31/04/2022"
+    ,"monto": 999999
+    ,"canal": 2
 }
 ###
-DELETE http://localhost:3000/api/owner/deuda/delete/6287d4971ca9ee478be0dc6b/eliminar123
+DELETE http://api-condo.herokuapp.com/api/owner/deuda/delete/62b619fc5dde100b8369062f/eliminar123
 
 #-------------------------------------CONDOMINIO-----------------------------------------------
-GET http://localhost:3000/api/condo/list
 ###
-POST http://localhost:3000/api/condo/newCondo
+GET http://api-condo.herokuapp.com/api/condo/list
+###
+POST http://api-condo.herokuapp.com/api/condo/newCondo
 Content-Type: application/json
 
 {
-    "name"        :"",
-    "direction"   :"",
-    "houseType"   : "",
-    "housesAmnt"  : ,
-    "expenses"    : 
+    "name"        :"NuevoCondo",
+    "direction"   :"Direccion",
+    "houseType"   : 1,
+    "housesAmnt"  : 2,
+    "expenses"    : 232323
 }
 
 ###
-DELETE http://localhost:3000/api/condo/delete/6287d7b2ea3d509beddb9fd5
+DELETE http://api-condo.herokuapp.com/api/condo/delete/62b61ac439e1930f4ce69795
 
 ###
-PUT http://localhost:3000/api/condo/modify/6287d7b2ea3d509beddb9fd5
+PUT http://api-condo.herokuapp.com/api/condo/modify/62b61adc39e1930f4ce6979a
 Content-Type: application/json
 
 {
-    "name"        :"",
-    "direction"   :"",
-    "houseType"   : "",
-    "housesAmnt"  : ,
-    "expenses"    : 
+    "name"        :"Condo Modificacdo",
+    "direction"   :"Dir nueva",
+    "houseType"   : 1,
+    "housesAmnt"  : 312,
+    "expenses"    : 3213123
 }
 
 #-------------------------------------HOUSES-----------------------------------------------
 ###
-GET http://localhost:3000/api/house/list
+GET http://api-condo.herokuapp.com/api/house/list
 ###
-GET http://localhost:3000/api/house/list/1
+GET http://api-condo.herokuapp.com/api/house/list/1
 ###
-POST http://localhost:3000/api/house/newHouse
+POST http://api-condo.herokuapp.com/api/house/newHouse
 Content-Type:  application/json
 
 {
-    "houseId": 1,
+    "houseId": 4,
     "condoId": 1,
     "price":   120000000,
     "m2":      135,
@@ -124,7 +129,7 @@ Content-Type:  application/json
     "floors":  1
 }
 ###
-PUT http://localhost:3000/api/house/modify/1
+PUT http://localhost:3000/api/house/modify/4
 Content-Type:  application/json
 
 {

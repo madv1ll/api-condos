@@ -4,7 +4,7 @@ const Condo = require('../models/condo')
 controller.listCondo = async (req, res) => {
     const condo = await Condo.find()
     con = [...condo]
-    on = con.map(o => {return {"ID": o._id, "Nombre": o.name, "Direccion":o.direction}})
+    on = con.map(o => {return {"ID": o._id, "Nombre": o.name, "Direccion":o.direction, "Tipo de Casa": o.houseType, "Cantidad de Casas": o.housesAmnt, "Gastos Comunes": o.expenses}})
     res.send(on)
 }
 controller.getCondo = async (req, res) => {
