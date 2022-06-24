@@ -1,9 +1,9 @@
 ###
-GET http://localhost:3000/api/owner/list
+GET http://api-condo.herokuapp.com/api/owner/list
 ###
-GET http://localhost:3000/api/owner/list/19.546.874-K
+GET http://api-condo.herokuapp.com/api/owner/list/19.720.997-6
 ###
-POST http://localhost:3000/api/owner/newOwner
+POST http://api-condo.herokuapp.com/api/owner/newOwner
 Content-Type: application/json
 
 {
@@ -14,26 +14,26 @@ Content-Type: application/json
     "housesId": [10]
 }
 ###
-PUT http://localhost:3000/api/owner/modify/19.720.997-6
+PUT http://api-condo.herokuapp.com/api/owner/modify/19.720.997-6
 Content-Type: application/json
 
 {
     "rut": "19.720.997-6",
-    "name": "Fabian Salazar",
+    "name": "Fabian Salazar modd",
     "mail": "f.salazars@duocuc.cl",
     "phone": 955448376,
     "housesId": [10]
 }
 ###
-DELETE http://localhost:3000/api/owner/delete/5000003-3/eliminar123
+DELETE http://api-condo.herokuapp.com/api/owner/delete/19.720.997-6/eliminar123
 
 #-------------------------------------DEUDA-----------------------------------------------
 ###
-GET http://localhost:3000/api/owner/deuda/19.453.567-5
+GET http://api-condo.herokuapp.com/api/owner/deuda/19.453.567-5
 ###
-GET http://localhost:3000/api/owner/deuda/19.453.567-5/historial
+GET http://api-condo.herokuapp.com/api/owner/deuda/19.453.567-5/historial
 ###
-POST http://localhost:3000/api/owner/newDeuda
+POST http://api-condo.herokuapp.com/api/owner/newDeuda
 Content-Type: application/json
 
 {
@@ -46,21 +46,21 @@ Content-Type: application/json
     ,"fechaPago": "27/04/2022"
     ,"fechaVencimiento": "31/04/2022"
     ,"monto": 5345354
-    ,"canal": 1
+    ,"canal": 2
 }
 
 ###
-POST http://musicpro-api.herokuapp.com/api/createClient
-Content-Type: application/json
+# POST http://musicpro-api.herokuapp.com/api/createClient
+# Content-Type: application/json
 
-{
-    "rut": "19.453.567-5"
-    ,"nombre": "Valentina Mora"
-    ,"direccion": "direccion 232"
-    ,"fechaPago": "27/04/2022"
-    ,"fechavencimiento": "31/04/2022"
-    ,"valorPago": 5345354
-}
+# {
+#     "rut": "19.453.567-5"
+#     ,"nombre": "Valentina Mora"
+#     ,"direccion": "direccion 232"
+#     ,"fechaPago": "27/04/2022"
+#     ,"fechavencimiento": "31/04/2022"
+#     ,"valorPago": 5345354
+# }
 ###
 PUT http://localhost:3000/api/owner/deuda/modify/6287d4971ca9ee478be0dc6b
 Content-Type: application/json
